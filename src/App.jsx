@@ -220,7 +220,7 @@ function App() {
           </p>
           <div className="hero__actions" aria-label="Contact links">
             <a className="button button--primary" href={`${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`} download>Download resume</a>
-            <a className="button button--ghost" href="mailto:sritejavalaboju000@gmail.com">Start a conversation</a>
+            <a className="button button--ghost" href="mailto:sritejavalaboju000@gmail.com?subject=Let%27s%20talk%20about%20AI%20systems&body=Hi%20Sriteja%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20about...%0A%0A">Start a conversation</a>
           </div>
         </div>
       </section>

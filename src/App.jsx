@@ -3,6 +3,7 @@ import profilePhoto from './assets/profile_photo.jpeg'
 
 const skills = [
   'Python',
+  'SQL',
   'FastAPI',
   'React',
   'Vue',
@@ -13,11 +14,24 @@ const skills = [
   'Vertex AI',
   'MCP',
   'RAG',
+  'RAGAS',
+  'LangSmith',
+  'LLMOps',
+  'MLOps',
+  'PyTorch',
+  'TensorFlow',
   'pgvector',
   'GCP',
+  'Cloud Run',
+  'Cloud Functions',
+  'Pub/Sub',
+  'Cloud Build',
   'AWS',
+  'SageMaker',
   'Terraform',
   'Docker',
+  'Jenkins',
+  'Cypress',
 ]
 
 const projects = [
@@ -47,6 +61,21 @@ const focusAreas = [
   'Semantic search and RAG',
   'Cloud-native AI platforms',
   'Human-in-the-loop workflows',
+]
+
+const credentials = [
+  {
+    issuer: 'Google Cloud',
+    title: 'Professional Machine Learning Engineer',
+    detail: 'Google Cloud certified in designing, building, and productionizing ML models that solve real business challenges.',
+    accent: 'GCP',
+  },
+  {
+    issuer: 'Google Cloud',
+    title: 'Advanced Generative AI: Deep Dive',
+    detail: 'Hands-on training in building, tuning, and deploying generative AI models with Vertex AI.',
+    accent: 'GenAI',
+  },
 ]
 
 const githubSignals = [
@@ -83,6 +112,7 @@ function App() {
           </a>
           <div className="nav__links">
             <a href="#work">Work</a>
+            <a href="#credentials">Credentials</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
           </div>
@@ -96,10 +126,13 @@ function App() {
               <h1>Sriteja Valaboju</h1>
             </div>
           </div>
+          <p className="certification-pill">
+            <span aria-hidden="true">✦</span> Google Cloud Certified Professional Machine Learning Engineer
+          </p>
           <p className="hero__copy">
-            I love solving problems and turning ambiguous ideas into production GenAI
-            systems, AI agent platforms, and cloud-native product experiences that
-            connect retrieval, reasoning, governance, and polished frontend workflows.
+            I turn ambiguous ideas into production GenAI systems, agent platforms, and
+            cloud-native product experiences that connect retrieval, reasoning,
+            evaluation, governance, and polished frontend workflows.
           </p>
           <div className="hero__actions" aria-label="Contact links">
             <a className="button button--primary" href="mailto:sritejavalaboju000@gmail.com">
@@ -168,6 +201,25 @@ function App() {
                   <span key={stat}>{stat}</span>
                 ))}
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="credentials" className="section credentials" aria-label="Certifications and training">
+        <div className="section__intro section__intro--wide">
+          <p className="eyebrow">Credentials</p>
+          <h2>Cloud-certified, production-minded.</h2>
+        </div>
+        <div className="credential-grid">
+          {credentials.map((credential) => (
+            <article className="credential-card" key={credential.title}>
+              <div className="credential-card__topline">
+                <span>{credential.issuer}</span>
+                <span className="credential-card__accent">{credential.accent}</span>
+              </div>
+              <h3>{credential.title}</h3>
+              <p>{credential.detail}</p>
             </article>
           ))}
         </div>

@@ -1,4 +1,14 @@
-# React + Vite
+# Sriteja Valaboju Portfolio
+
+This repository contains the portfolio site and a separate, local-only job-application MCP server.
+
+## Job Apply Profile MCP
+
+[`job-apply-mcp`](./job-apply-mcp) provides structured tools for job discovery plans, listing ingestion, fit scoring, tailored application drafts, and review-gated approval records. It keeps protected data out of the public profile and never submits an application itself.
+
+See the [MCP setup guide](./job-apply-mcp/README.md) for installation, local encryption, and client configuration.
+
+## Portfolio site
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

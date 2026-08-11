@@ -1,0 +1,12 @@
+[
+  {
+    "id": "example-ai-engineer",
+    "source": "careers",
+    "url": "https://careers.example.com/jobs/ai-engineer",
+    "title": "AI Engineer",
+    "company": "Example Company",
+    "location": "Bengaluru, India",
+    "description": "Build production AI systems with Python, retrieval augmented generation, cloud infrastructure, model evaluation, and workflow automation.",
+    "applyEmail": ""
+  }
+]

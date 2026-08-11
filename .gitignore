@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+job-apply-mcp/.env
+job-apply-mcp/data/private-profile.json
+job-apply-mcp/data/private-profile.json.enc
+job-apply-mcp/data/jobs.local.json
+job-apply-mcp/data/applications.local.json
 
 # Editor directories and files
 .vscode/*

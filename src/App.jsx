@@ -60,8 +60,8 @@ const systemStories = [
     id: 'evaluation',
     eyebrow: '02 / Evaluation & grounding',
     title: 'Answers that can earn trust.',
-    text: 'RAGAS-based evaluation, golden datasets, and response grounding make it possible to identify unsupported claims, trace evidence, and improve behavior without guessing.',
-    proof: ['RAGAS', 'Golden datasets', 'Citation grounding'],
+    text: 'Evaluation suites, curated challenge sets, and response grounding make it possible to identify unsupported claims, trace evidence, and improve behavior without guessing.',
+    proof: ['Evaluation suites', 'Golden datasets', 'Citation grounding'],
     nodes: ['Golden set', 'Retrieve', 'Generate', 'Evaluate', 'Improve'],
   },
   {
@@ -74,11 +74,11 @@ const systemStories = [
   },
 ]
 
-function WorkflowDiagram({ id, nodes }) {
+function AgentWorkflow({ nodes }) {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <div className={`workflow workflow--${id}`} aria-label={`${id} workflow diagram`}>
+    <div className="workflow workflow--agents" aria-label="Multi-agent orchestration workflow diagram">
       <div className="workflow__grid" aria-hidden="true" />
       <div className="workflow__line workflow__line--one" aria-hidden="true">
         <MotionDiv
@@ -113,6 +113,61 @@ function WorkflowDiagram({ id, nodes }) {
   )
 }
 
+function GroundingDiagram() {
+  const shouldReduceMotion = useReducedMotion()
+
+  return (
+    <div className="grounding-diagram" aria-label="Documents are scanned, chunked, retrieved from a database, and formed into a grounded answer">
+      <div className="workflow__grid" aria-hidden="true" />
+      <MotionDiv className="scanner-beam" aria-hidden="true" animate={shouldReduceMotion ? { opacity: 0 } : { top: ['22%', '73%', '22%'] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }} />
+      <div className="grounding-db"><span className="grounding-icon">DB</span><span>Evidence store</span></div>
+      <div className="document-stack" aria-hidden="true">
+        <span /><span /><span />
+      </div>
+      <div className="grounding-label grounding-label--scan">Scan docs</div>
+      <div className="chunk-stream" aria-label="Retrieved document chunks">
+        {['Chunk 01', 'Chunk 02', 'Chunk 03'].map((chunk, index) => (
+          <MotionDiv key={chunk} className="chunk" animate={shouldReduceMotion ? { opacity: 1 } : { x: [0, 8, 0], opacity: [.75, 1, .75] }} transition={{ duration: 2.8, delay: index * .34, repeat: Infinity, ease: 'easeInOut' }}>{chunk}</MotionDiv>
+        ))}
+      </div>
+      <div className="answer-skeleton">
+        <span className="answer-skeleton__eyebrow">Grounded response</span>
+        <span /><span /><span className="answer-skeleton__short" />
+        <b>Sources attached</b>
+      </div>
+      <div className="grounding-connection grounding-connection--one" aria-hidden="true" />
+      <div className="grounding-connection grounding-connection--two" aria-hidden="true" />
+    </div>
+  )
+}
+
+function ApprovalWorkflow({ nodes }) {
+  const shouldReduceMotion = useReducedMotion()
+
+  return (
+    <div className="workflow workflow--automation" aria-label="Workflow automation pauses at an approval gate before publishing">
+      <div className="workflow__grid" aria-hidden="true" />
+      <div className="synth-grid" aria-hidden="true" />
+      <div className="workflow__line workflow__line--one" aria-hidden="true" />
+      <div className="workflow__nodes">
+        {nodes.map((node, index) => (
+          <MotionDiv className={`workflow__node workflow__node--${index + 1}`} key={node} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .55 }} transition={{ duration: .42, delay: index * .12 }}>
+            <span className="workflow__node-index">0{index + 1}</span><span>{node}</span>
+          </MotionDiv>
+        ))}
+      </div>
+      <div className="approval-gate" aria-label="Human approval required"><span>Human approval</span><b>||</b></div>
+      <MotionDiv className="approval-pulse" aria-hidden="true" animate={shouldReduceMotion ? { opacity: 0 } : { left: ['5%', '60%', '60%', '60%', '103%'], opacity: [0, 1, 1, 1, 0] }} transition={{ duration: 5.4, repeat: Infinity, ease: 'linear', times: [0, .48, .62, .72, 1] }} />
+    </div>
+  )
+}
+
+function WorkflowDiagram({ id, nodes }) {
+  if (id === 'evaluation') return <GroundingDiagram />
+  if (id === 'automation') return <ApprovalWorkflow nodes={nodes} />
+  return <AgentWorkflow nodes={nodes} />
+}
+
 function SystemStory({ story }) {
   return (
     <article className={`system-story system-story--${story.id}`}>
@@ -144,6 +199,7 @@ function App() {
             <a href="#systems">Systems</a>
             <a href="#work">Work</a>
             <a href="#credentials">Credentials</a>
+            <a href={`${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`} download>Resume</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
@@ -163,7 +219,7 @@ function App() {
             platforms that make them useful to people.
           </p>
           <div className="hero__actions" aria-label="Contact links">
-            <a className="button button--primary" href="#systems">Explore system design</a>
+            <a className="button button--primary" href={`${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`} download>Download resume</a>
             <a className="button button--ghost" href="mailto:sritejavalaboju000@gmail.com">Start a conversation</a>
           </div>
         </div>

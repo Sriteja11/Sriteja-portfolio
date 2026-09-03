@@ -27,3 +27,8 @@ job-apply-mcp/data/applications.local.json
 *.njsproj
 *.sln
 *.sw?
+ 
+# Python
+job-apply-mcp/.venv/
+job-apply-mcp/**/__pycache__/
+job-apply-mcp/**/*.py[cod]

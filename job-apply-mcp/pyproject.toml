@@ -1,0 +1,27 @@
+[project]
+name = "job-apply-profile-mcp"
+version = "0.1.0"
+description = "Job apply profile Model Context Protocol server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.2.0",
+    "pydantic>=2.0",
+    "cryptography>=42.0.0",
+]
+
+[project.scripts]
+job-apply-mcp = "src.server:main"
+encrypt-profile = "src.encrypt_private_profile:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]

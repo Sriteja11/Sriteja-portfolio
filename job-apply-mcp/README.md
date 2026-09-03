@@ -17,7 +17,7 @@ It supports discovery plans for LinkedIn, Naukri, Indeed, Wellfound, Workday, an
 ```powershell
 cd job-apply-mcp
 Copy-Item .env.example .env
-npm install
+uv sync
 ```
 
 Fill `data/profile.public.json`. For protected fields create this local-only file:
@@ -35,20 +35,20 @@ Fill `data/profile.public.json`. For protected fields create this local-only fil
 Then encrypt and delete the plaintext automatically:
 
 ```powershell
-npm run encrypt-profile
-npm start
+uv run encrypt-profile
+uv run job-apply-mcp
 ```
 
-## Codex MCP configuration
+## MCP configuration
 
-Add this server to your MCP client configuration after installing dependencies:
+Add this server to your MCP client configuration (Claude Desktop, Cursor, or Antigravity):
 
 ```json
 {
   "mcpServers": {
     "job-apply-profile": {
-      "command": "node",
-      "args": ["C:/Users/srite/Code/Sriteja-portfolio/job-apply-mcp/src/server.js"],
+      "command": "uv",
+      "args": ["--directory", "C:/Users/srite/Code/Sriteja-portfolio/job-apply-mcp", "run", "job-apply-mcp"],
       "env": {
         "PRIVATE_PROFILE_ACCESS_KEY": "...",
         "PRIVATE_PROFILE_ENCRYPTION_KEY": "...",
@@ -67,4 +67,8 @@ Add this server to your MCP client configuration after installing dependencies:
 4. `prepare_application_draft` and `compose_application_email` create reviewable text.
 5. An approval relay can call `approve_application`; a future, separate submit adapter must check `approved_for_submission` first.
 
-Run tests with `npm test`.
+Run tests with:
+
+```powershell
+uv run pytest
+```

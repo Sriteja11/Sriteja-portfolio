@@ -1,292 +1,201 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import React from 'react'
 import './App.css'
 import profilePhoto from './assets/profile_photo.jpeg'
+import { Navigation } from './components/Navigation'
+import { SystemWorkflows } from './components/SystemWorkflows'
+import { UtilitiesGrid } from './components/UtilitiesGrid'
+import { TerminalDemo } from './components/TerminalDemo'
+import {
+  profile,
+  skillCategories,
+  systemStories,
+  flagshipProjects,
+  utilities,
+  credentials,
+} from './data/portfolioData'
 
-const MotionDiv = motion.div
-
-const skills = [
-  'Python', 'FastAPI', 'SQL', 'React', 'Vue', 'TypeScript', 'Google ADK',
-  'Vertex AI', 'LangChain', 'LangGraph', 'RAG', 'RAGAS', 'LangSmith', 'MCP',
-  'LLMOps', 'MLOps', 'PyTorch', 'TensorFlow', 'pgvector', 'GCP', 'Cloud Run',
-  'Cloud Functions', 'Pub/Sub', 'Cloud SQL', 'Terraform', 'Docker', 'SageMaker',
-]
-
-const projects = [
-  {
-    title: 'Augmented BMS',
-    eyebrow: 'Enterprise GenAI Assistant',
-    text: 'A conversational and advanced search experience that combines semantic retrieval, multi-agent workflows, link analysis, and production-grade GCP services.',
-    stats: ['Google ADK', 'Vertex AI', 'RAGAS evaluation'],
-  },
-  {
-    title: 'AI Portfolio',
-    eyebrow: 'AI Project Intelligence',
-    text: 'A central platform for tracking AI initiatives, surfacing meaningful synergies, and automating project updates through governed role-based workflows.',
-    stats: ['FastAPI + React', 'Cloud Run', 'RBAC'],
-  },
-  {
-    title: 'ModelOps Platform',
-    eyebrow: 'ML Platform Frontend',
-    text: 'A platform experience for model creation, deployment, monitoring, drift detection, and cost observability, supported by a reusable design system.',
-    stats: ['SageMaker', 'Monitoring', 'Jenkins CI/CD'],
-  },
-]
-
-const credentials = [
-  {
-    issuer: 'Google Cloud',
-    title: 'Professional Machine Learning Engineer',
-    detail: 'Certified in designing, building, and productionizing ML models that solve real business challenges on Google Cloud.',
-    accent: 'GCP',
-  },
-  {
-    issuer: 'Google Cloud',
-    title: 'Advanced Generative AI: Deep Dive',
-    detail: 'Hands-on training in building, tuning, and deploying generative AI models with Vertex AI.',
-    accent: 'GenAI',
-  },
-]
-
-const systemStories = [
-  {
-    id: 'agents',
-    eyebrow: '01 / Agent orchestration',
-    title: 'Long-running research, routed with intent.',
-    text: 'Advanced Search pairs a fast semantic path with a deeper, multi-agent route. Routing, tool calls, link analysis, and human checkpoints are designed as one observable workflow.',
-    proof: ['Google ADK', 'Semantic retrieval', 'Human-in-the-loop'],
-    nodes: ['Question', 'Route', 'Research agents', 'Review', 'Grounded answer'],
-  },
-  {
-    id: 'evaluation',
-    eyebrow: '02 / Evaluation & grounding',
-    title: 'Answers that can earn trust.',
-    text: 'Evaluation suites, curated challenge sets, and response grounding make it possible to identify unsupported claims, trace evidence, and improve behavior without guessing.',
-    proof: ['Evaluation suites', 'Golden datasets', 'Citation grounding'],
-    nodes: ['Golden set', 'Retrieve', 'Generate', 'Evaluate', 'Improve'],
-  },
-  {
-    id: 'automation',
-    eyebrow: '03 / Governed automation',
-    title: 'AI workflows that move work forward.',
-    text: 'Project intelligence workflows consolidate updates, surface synergies, and retain the permissions, approvals, and auditability enterprise AI needs.',
-    proof: ['RBAC', 'Cloud Run', 'Event-driven GCP'],
-    nodes: ['Intake', 'Classify', 'Enrich', 'Approve', 'Publish'],
-  },
-]
-
-function AgentWorkflow({ nodes }) {
-  const shouldReduceMotion = useReducedMotion()
+export default function App() {
+  const resumeUrl = `${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`
 
   return (
-    <div className="workflow workflow--agents" aria-label="Multi-agent orchestration workflow diagram">
-      <div className="workflow__grid" aria-hidden="true" />
-      <div className="workflow__line workflow__line--one" aria-hidden="true">
-        <MotionDiv
-          className="workflow__pulse"
-          animate={shouldReduceMotion ? { opacity: 0 } : { left: ['-4%', '104%'], opacity: [0, 1, 1, 0] }}
-          transition={{ duration: 4.2, repeat: Infinity, ease: 'linear', delay: 0.5 }}
-        />
-      </div>
-      <div className="workflow__line workflow__line--two" aria-hidden="true" />
-      <div className="workflow__nodes">
-        {nodes.map((node, index) => (
-          <MotionDiv
-            className={`workflow__node workflow__node--${index + 1}`}
-            key={node}
-            initial={{ opacity: 0, y: 14, scale: 0.94 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.55 }}
-            transition={{ duration: 0.42, delay: index * 0.12 }}
-          >
-            <span className="workflow__node-index">0{index + 1}</span>
-            <span>{node}</span>
-          </MotionDiv>
-        ))}
-      </div>
-      <MotionDiv
-        className="workflow__orb"
-        aria-hidden="true"
-        animate={shouldReduceMotion ? { opacity: 0.45 } : { y: [-8, 8, -8], x: [0, 9, 0], scale: [1, 1.08, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      />
-    </div>
-  )
-}
+    <div className="page-shell">
+      <Navigation resumeUrl={resumeUrl} />
 
-function GroundingDiagram() {
-  const shouldReduceMotion = useReducedMotion()
+      <main>
+        {/* Hero Section */}
+        <section id="top" className="hero" aria-label="Introduction">
+          <img
+            className="hero__visual"
+            src={`${import.meta.env.BASE_URL}hero-agent-systems.png`}
+            alt="Abstract AI agent network and cloud infrastructure visualization"
+          />
+          <div className="hero__motion hero__motion--one" aria-hidden="true" />
+          <div className="hero__motion hero__motion--two" aria-hidden="true" />
+          <div className="hero__shade" />
 
-  return (
-    <div className="grounding-diagram" aria-label="Documents are scanned, chunked, retrieved from a database, and formed into a grounded answer">
-      <div className="workflow__grid" aria-hidden="true" />
-      <MotionDiv className="scanner-beam" aria-hidden="true" animate={shouldReduceMotion ? { opacity: 0 } : { top: ['22%', '73%', '22%'] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }} />
-      <div className="grounding-db"><span className="grounding-icon">DB</span><span>Evidence store</span></div>
-      <div className="document-stack" aria-hidden="true">
-        <span /><span /><span />
-      </div>
-      <div className="grounding-label grounding-label--scan">Scan docs</div>
-      <div className="chunk-stream" aria-label="Retrieved document chunks">
-        {['Chunk 01', 'Chunk 02', 'Chunk 03'].map((chunk, index) => (
-          <MotionDiv key={chunk} className="chunk" animate={shouldReduceMotion ? { opacity: 1 } : { x: [0, 8, 0], opacity: [.75, 1, .75] }} transition={{ duration: 2.8, delay: index * .34, repeat: Infinity, ease: 'easeInOut' }}>{chunk}</MotionDiv>
-        ))}
-      </div>
-      <div className="answer-skeleton">
-        <span className="answer-skeleton__eyebrow">Grounded response</span>
-        <span /><span /><span className="answer-skeleton__short" />
-        <b>Sources attached</b>
-      </div>
-      <div className="grounding-connection grounding-connection--one" aria-hidden="true" />
-      <div className="grounding-connection grounding-connection--two" aria-hidden="true" />
-    </div>
-  )
-}
+          <div className="hero__content">
+            <div className="hero__topline">
+              <span className="live-status-pill">
+                <span className="live-status-indicator" />
+                Available for GenAI & Platform Engineering roles
+              </span>
+              <span className="location-tag">Bengaluru, India</span>
+            </div>
 
-function ApprovalWorkflow({ nodes }) {
-  const shouldReduceMotion = useReducedMotion()
+            <div className="profile-lockup">
+              <div className="profile-image-frame">
+                <img src={profilePhoto} alt="Sriteja Valaboju" />
+                <span className="profile-verified-badge" title="Google Cloud Certified">✓</span>
+              </div>
+              <div>
+                <p className="eyebrow">Software Engineer / GenAI Platforms</p>
+                <h1 className="hero__title">{profile.name}</h1>
+              </div>
+            </div>
 
-  return (
-    <div className="workflow workflow--automation" aria-label="Workflow automation pauses at an approval gate before publishing">
-      <div className="workflow__grid" aria-hidden="true" />
-      <div className="synth-grid" aria-hidden="true" />
-      <div className="workflow__line workflow__line--one" aria-hidden="true" />
-      <div className="workflow__nodes">
-        {nodes.map((node, index) => (
-          <MotionDiv className={`workflow__node workflow__node--${index + 1}`} key={node} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .55 }} transition={{ duration: .42, delay: index * .12 }}>
-            <span className="workflow__node-index">0{index + 1}</span><span>{node}</span>
-          </MotionDiv>
-        ))}
-      </div>
-      <div className="approval-gate" aria-label="Human approval required"><span>Human approval</span><b>||</b></div>
-      <MotionDiv className="approval-pulse" aria-hidden="true" animate={shouldReduceMotion ? { opacity: 0 } : { left: ['5%', '60%', '60%', '60%', '103%'], opacity: [0, 1, 1, 1, 0] }} transition={{ duration: 5.4, repeat: Infinity, ease: 'linear', times: [0, .48, .62, .72, 1] }} />
-    </div>
-  )
-}
+            <p className="certification-pill">
+              <span className="cert-star" aria-hidden="true">★</span>
+              <span>{profile.certification}</span>
+            </p>
 
-function WorkflowDiagram({ id, nodes }) {
-  if (id === 'evaluation') return <GroundingDiagram />
-  if (id === 'automation') return <ApprovalWorkflow nodes={nodes} />
-  return <AgentWorkflow nodes={nodes} />
-}
+            <p className="hero__copy">{profile.summary}</p>
 
-function SystemStory({ story }) {
-  return (
-    <article className={`system-story system-story--${story.id}`}>
-      <div className="system-story__copy">
-        <p className="eyebrow">{story.eyebrow}</p>
-        <h3>{story.title}</h3>
-        <p>{story.text}</p>
-        <div className="proof-row" aria-label={`${story.title} skills`}>
-          {story.proof.map((item) => <span key={item}>{item}</span>)}
-        </div>
-      </div>
-      <WorkflowDiagram id={story.id} nodes={story.nodes} />
-    </article>
-  )
-}
-
-function App() {
-  return (
-    <main className="page-shell">
-      <section className="hero" aria-label="Introduction">
-        <img className="hero__visual" src={`${import.meta.env.BASE_URL}hero-agent-systems.png`} alt="Abstract AI agent systems and cloud infrastructure visual" />
-        <div className="hero__motion hero__motion--one" aria-hidden="true" />
-        <div className="hero__motion hero__motion--two" aria-hidden="true" />
-        <div className="hero__shade" />
-
-        <nav className="nav" aria-label="Primary navigation">
-          <a className="nav__brand" href="#top" aria-label="Sriteja Valaboju home">SV</a>
-          <div className="nav__links">
-            <a href="#systems">Systems</a>
-            <a href="#work">Work</a>
-            <a href="#credentials">Credentials</a>
-            <a href={`${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`} download>Resume</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
-
-        <div id="top" className="hero__content">
-          <div className="profile-lockup">
-            <img src={profilePhoto} alt="Sriteja Valaboju" />
-            <div>
-              <p className="eyebrow">Software Engineer / GenAI Platforms / Bengaluru</p>
-              <h1>Sriteja Valaboju</h1>
+            <div className="hero__actions" aria-label="Action links">
+              <a className="button button--primary" href={resumeUrl} download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download resume</span>
+              </a>
+              <a
+                className="button button--secondary"
+                href={`mailto:${profile.email}?subject=Let%27s%20connect%20about%20AI%20systems&body=Hi%20Sriteja%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about...`}
+              >
+                <span>Start a conversation</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a
+                className="button button--ghost"
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>GitHub @Sriteja11</span>
+              </a>
             </div>
           </div>
-          <p className="certification-pill"><span aria-hidden="true">*</span> Google Cloud Certified Professional Machine Learning Engineer</p>
-          <p className="hero__copy">
-            I engineer AI systems that can be trusted in production: grounded retrieval,
-            evaluated LLM behavior, long-running multi-agent workflows, and the cloud
-            platforms that make them useful to people.
-          </p>
-          <div className="hero__actions" aria-label="Contact links">
-            <a className="button button--primary" href={`${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`} download>Download resume</a>
-            <a className="button button--ghost" href="mailto:sritejavalaboju000@gmail.com?subject=Let%27s%20talk%20about%20AI%20systems&body=Hi%20Sriteja%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20about...%0A%0A">Start a conversation</a>
+        </section>
+
+        {/* Shipped Systems Section */}
+        <SystemWorkflows stories={systemStories} />
+
+        {/* Flagship Production Projects */}
+        <section id="work" className="section section--split">
+          <div className="section__intro">
+            <p className="eyebrow">Selected platforms</p>
+            <h2>AI products with engineering depth.</h2>
+            <p>Production systems designed for enterprise reliability, scale, and clear interfaces.</p>
           </div>
-        </div>
-      </section>
+          <div className="project-grid">
+            {flagshipProjects.map((project) => (
+              <article className="project-card" key={project.title}>
+                <div className="project-card__header">
+                  <span className="project-card__eyebrow">{project.eyebrow}</span>
+                  <span className="project-card__badge">{project.highlight}</span>
+                </div>
+                <h3>{project.title}</h3>
+                <p>{project.text}</p>
+                <div className="stat-row">
+                  {project.tech.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <section id="systems" className="systems section" aria-label="AI system capabilities">
-        <div className="systems__intro">
-          <p className="eyebrow">How I build AI systems</p>
-          <h2>Beyond a demo: systems with evidence, control, and a path to action.</h2>
-          <p>Each workflow below is grounded in work shipped at Airbus, showing the engineering choices behind reliable AI products.</p>
-        </div>
-        <div className="system-stories">
-          {systemStories.map((story) => <SystemStory story={story} key={story.id} />)}
-        </div>
-      </section>
+        {/* Open Source & Utilities Section (New from GitHub analysis) */}
+        <UtilitiesGrid utilities={utilities} />
 
-      <section id="work" className="section section--split">
-        <div className="section__intro">
-          <p className="eyebrow">Selected work</p>
-          <h2>AI products with platform depth.</h2>
-        </div>
-        <div className="project-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.title}>
-              <p className="project-card__eyebrow">{project.eyebrow}</p>
-              <h3>{project.title}</h3>
-              <p>{project.text}</p>
-              <div className="stat-row">{project.stats.map((stat) => <span key={stat}>{stat}</span>)}</div>
-            </article>
-          ))}
-        </div>
-      </section>
+        {/* Terminal Execution Inspector */}
+        <TerminalDemo />
 
-      <section id="credentials" className="section credentials" aria-label="Certifications and training">
-        <div className="section__intro section__intro--wide">
-          <p className="eyebrow">Credentials</p>
-          <h2>Cloud-certified, production-minded.</h2>
-        </div>
-        <div className="credential-grid">
-          {credentials.map((credential) => (
-            <article className="credential-card" key={credential.title}>
-              <div className="credential-card__topline"><span>{credential.issuer}</span><span className="credential-card__accent">{credential.accent}</span></div>
-              <h3>{credential.title}</h3>
-              <p>{credential.detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+        {/* Credentials & Certifications */}
+        <section id="credentials" className="section credentials" aria-label="Certifications and qualifications">
+          <div className="section__intro section__intro--wide">
+            <p className="eyebrow">Credentials & validation</p>
+            <h2>Cloud-certified, production-minded.</h2>
+          </div>
+          <div className="credential-grid">
+            {credentials.map((item) => (
+              <article className="credential-card" key={item.title}>
+                <div className="credential-card__topline">
+                  <span>{item.issuer}</span>
+                  <span className="credential-card__accent">{item.accent}</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <section id="skills" className="section skills-section">
-        <div className="section__intro section__intro--wide">
-          <p className="eyebrow">Technical stack</p>
-          <h2>The implementation layer behind the workflows.</h2>
-        </div>
-        <div className="skill-cloud">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
-      </section>
+        {/* Technical Stack Categorized */}
+        <section id="stack" className="section skills-section">
+          <div className="section__intro section__intro--wide">
+            <p className="eyebrow">Technical stack</p>
+            <h2>The engineering layer behind the systems.</h2>
+            <p>Tools and infrastructure I use daily to build, evaluate, and scale software.</p>
+          </div>
 
-      <footer id="contact" className="footer">
-        <div>
-          <p className="eyebrow">Contact</p>
-          <h2>Let&apos;s build AI people can rely on.</h2>
-          <p>Bengaluru, Karnataka, India / +91 934-649-3360</p>
-        </div>
-        <a className="button button--primary" href="mailto:sritejavalaboju000@gmail.com">sritejavalaboju000@gmail.com</a>
-      </footer>
-    </main>
+          <div className="stack-columns">
+            {skillCategories.map((group) => (
+              <div className="stack-column" key={group.title}>
+                <h3 className="stack-column__title">{group.title}</h3>
+                <div className="skill-cloud">
+                  {group.skills.map((skill) => (
+                    <span key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Sleek Minimalist Footer */}
+        <footer id="contact" className="footer">
+          <div className="footer__content">
+            <div>
+              <p className="eyebrow">Let's build together</p>
+              <h2>Have a platform or AI challenge to solve?</h2>
+              <p className="footer__meta">
+                <span>Bengaluru, Karnataka, India</span>
+                <span className="footer__sep">/</span>
+                <span>{profile.phone}</span>
+                <span className="footer__sep">/</span>
+                <a href={profile.githubUrl} target="_blank" rel="noopener noreferrer">github.com/Sriteja11</a>
+              </p>
+            </div>
+            <div className="footer__actions">
+              <a className="button button--primary" href={`mailto:${profile.email}`}>
+                <span>{profile.email}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a className="button button--ghost" href={resumeUrl} download>
+                <span>Download resume</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="footer__bottom">
+            <span>© {new Date().getFullYear()} Sriteja Valaboju. Built with React + Vite, Python MCP, and modern web standards.</span>
+            <div className="footer__bottom-links">
+              <a href={profile.portfolioRepoUrl} target="_blank" rel="noopener noreferrer">Portfolio source</a>
+              <a href="#top">Back to top ↑</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
   )
 }
-
-export default App

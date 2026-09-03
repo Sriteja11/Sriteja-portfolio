@@ -32,7 +32,7 @@ const commands = [
       '[-] TLS Handshake:    28.1ms',
       '[-] TTFB:             94.2ms',
       '[-] Streaming LLM:    340.5ms (first chunk 140ms)',
-      '[✓] P95 Latency:      475.2ms | Status: HEALTHY'
+      '[ok] P95 Latency:     475.2ms | Status: HEALTHY'
     ]
   },
   {
@@ -45,7 +45,7 @@ const commands = [
       '[2/4] Answer relevancy:            0.92 / 1.00',
       '[3/4] Context precision:           0.89 / 1.00',
       '[4/4] Hallucination rate:          0.02 (Threshold < 0.05)',
-      '[✓] Evaluation passed. Approved for staging rollout.'
+      '[ok] Evaluation passed. Approved for staging rollout.'
     ]
   }
 ]
@@ -55,11 +55,11 @@ export function TerminalDemo() {
   const current = commands.find(c => c.id === activeTab) || commands[0]
 
   return (
-    <section id="terminal" className="section terminal-section">
-      <div className="section__intro section__intro--wide">
+    <section id="terminal" className="section">
+      <div className="section__intro">
         <p className="eyebrow">System execution</p>
         <h2>Tooling, profiling, and evaluation in motion.</h2>
-        <p>Inspect how tools and pipelines run locally and in production.</p>
+        <p className="section__subtitle">Inspect how tools and pipelines run locally and in production.</p>
       </div>
 
       <div className="terminal-window">
@@ -85,9 +85,8 @@ export function TerminalDemo() {
         </div>
 
         <div className="terminal-body">
-          <div className="terminal-line terminal-prompt">
-            <span className="terminal-arrow">➜</span>
-            <span className="terminal-dir">~/workspace</span>
+          <div className="terminal-prompt">
+            <span className="terminal-arrow">$</span>
             <span className="terminal-cmd">{current.cmd}</span>
           </div>
           <pre className="terminal-output">

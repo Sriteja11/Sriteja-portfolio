@@ -6,6 +6,7 @@ export const profile = {
   location: 'Bengaluru, India',
   phone: '+91 934-649-3360',
   email: 'sritejavalaboju000@gmail.com',
+  linkedinUrl: 'https://www.linkedin.com/in/sriteja-valaboju-65184717a/',
   githubUrl: 'https://github.com/Sriteja11',
   portfolioRepoUrl: 'https://github.com/Sriteja11/Sriteja-portfolio',
   liveUrl: 'https://sriteja11.github.io/Sriteja-portfolio/',

@@ -1,5 +1,6 @@
 import React from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { useCardGlow } from '../hooks/useCardGlow'
 
 const MotionDiv = motion.div
 
@@ -29,7 +30,7 @@ function FlowSteps({ nodes }) {
             <span className="flow-step__label">{node}</span>
           </MotionDiv>
           {i < nodes.length - 1 && (
-            <span className="flow-step__arrow" aria-hidden="true">\u2192</span>
+            <span className="flow-step__arrow" aria-hidden="true">→</span>
           )}
         </React.Fragment>
       ))}
@@ -38,6 +39,8 @@ function FlowSteps({ nodes }) {
 }
 
 export function SystemWorkflows({ stories }) {
+  const glow = useCardGlow()
+
   return (
     <section id="systems" className="section" aria-label="AI system capabilities">
       <div className="section__intro">
@@ -56,6 +59,7 @@ export function SystemWorkflows({ stories }) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
+            {...glow}
           >
             <div className="story-card__header">
               <span className="story-card__index">{story.index}</span>

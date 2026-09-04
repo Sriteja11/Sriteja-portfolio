@@ -18,15 +18,19 @@ export const profile = {
 export const skillCategories = [
   {
     title: 'AI & Evaluation',
-    skills: ['LangChain', 'LangGraph', 'Vertex AI', 'Google ADK', 'RAG', 'RAGAS', 'LangSmith', 'MCP', 'PyTorch', 'pgvector'],
+    skills: ['LangChain', 'LangGraph', 'Google ADK', 'Vertex AI', 'RAG', 'RAGAS', 'LangSmith', 'MCP', 'Multi-Agent Systems', 'ReAct Patterns', 'Prompt Engineering', 'Hallucination Detection', 'Transformers', 'Hugging Face', 'vLLM', 'PyTorch', 'pgvector', 'LLMOps', 'MLOps'],
   },
   {
-    title: 'Cloud & Infrastructure',
-    skills: ['GCP', 'Cloud Run', 'Cloud Functions', 'Pub/Sub', 'Cloud SQL', 'Terraform', 'Docker', 'SageMaker', 'MLOps'],
+    title: 'Cloud (GCP)',
+    skills: ['GCP', 'Cloud Run', 'Cloud Functions', 'Cloud Build', 'Pub/Sub', 'Cloud SQL', 'BigQuery', 'Terraform', 'Docker', 'IAM'],
+  },
+  {
+    title: 'Cloud (AWS)',
+    skills: ['Lambda', 'API Gateway', 'S3', 'DynamoDB', 'Elastic Load Balancing', 'ECS', 'SageMaker', 'CloudFormation', 'CDK', 'VPC'],
   },
   {
     title: 'Engineering & Delivery',
-    skills: ['Python', 'FastAPI', 'TypeScript', 'React', 'Vue', 'SQL', 'uv', 'Node.js', 'CI/CD', 'Jenkins'],
+    skills: ['Python', 'FastAPI', 'TypeScript', 'React', 'Vue', 'PostgreSQL', 'SQL', 'Node.js', 'uv', 'Jenkins', 'CI/CD', 'Jest', 'Cypress'],
   },
 ]
 
@@ -68,7 +72,7 @@ export const flagshipProjects = [
     title: 'Augmented BMS',
     eyebrow: 'Enterprise GenAI Assistant',
     text: 'A conversational and advanced search experience combining semantic retrieval, multi-agent workflows, link analysis, and production GCP services.',
-    tech: ['Google ADK', 'Vertex AI', 'RAGAS', 'Cloud Run', 'pgvector'],
+    tech: ['Google ADK', 'LangChain', 'Vertex AI', 'RAGAS', 'PostgreSQL', 'Cloud Run'],
     highlight: 'Airbus Enterprise',
   },
   {
@@ -81,8 +85,8 @@ export const flagshipProjects = [
   {
     title: 'ModelOps Platform',
     eyebrow: 'ML Platform & Observability',
-    text: 'A platform experience for model creation, deployment, monitoring, drift detection, and cost observability, backed by a unified design system.',
-    tech: ['SageMaker', 'FastAPI', 'React', 'Monitoring', 'Jenkins CI/CD'],
+    text: 'A platform experience for model creation, SageMaker deployment, monitoring, drift detection, and AWS cost observability, backed by a unified design system. Infrastructure runs on API Gateway, Lambda, S3, and DynamoDB behind load-balanced services, deployed via CloudFormation and CDK.',
+    tech: ['SageMaker', 'API Gateway', 'Lambda', 'DynamoDB', 'S3', 'React', 'Jenkins CI/CD'],
     highlight: 'Internal Tooling',
   },
 ]

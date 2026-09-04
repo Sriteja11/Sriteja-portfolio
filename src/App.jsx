@@ -6,6 +6,9 @@ import { Navigation } from './components/Navigation'
 import { SystemWorkflows } from './components/SystemWorkflows'
 import { UtilitiesGrid } from './components/UtilitiesGrid'
 import { TerminalDemo } from './components/TerminalDemo'
+import { TouchSplash } from './components/TouchSplash'
+import { GlassLens } from './components/GlassLens'
+import { useCardGlow } from './hooks/useCardGlow'
 import {
   profile,
   skillCategories,
@@ -16,12 +19,15 @@ import {
 } from './data/portfolioData'
 
 export default function App() {
+  const glow = useCardGlow()
   const resumeUrl = `${import.meta.env.BASE_URL}Sriteja_Valaboju_Resume.pdf`
 
   return (
     <div className="page-shell">
       <GradientCanvas />
-      <Navigation resumeUrl={resumeUrl} />
+      <TouchSplash />
+      <GlassLens />
+      <Navigation />
 
       <main>
         {/* Hero */}
@@ -37,7 +43,7 @@ export default function App() {
           <div className="profile-lockup">
             <div className="profile-image-frame">
               <img src={profilePhoto} alt="Sriteja Valaboju" />
-              <span className="verified-badge" title="Google Cloud Certified">\u2713</span>
+              <span className="verified-badge" title="Google Cloud Certified">✓</span>
             </div>
             <div>
               <p className="eyebrow">Software Engineer / GenAI Platforms</p>
@@ -46,7 +52,7 @@ export default function App() {
           </div>
 
           <p className="cert-pill">
-            <span className="cert-star" aria-hidden="true">\u2605</span>
+            <span className="cert-star" aria-hidden="true">★</span>
             <span>{profile.certification}</span>
           </p>
 
@@ -71,10 +77,28 @@ export default function App() {
           </div>
         </section>
 
-        {/* Systems */}
-        <SystemWorkflows stories={systemStories} />
+        {/* Skills */}
+        <section id="skills" className="section">
+          <div className="section__intro">
+            <p className="eyebrow">Skills</p>
+            <h2>The engineering layer behind the systems.</h2>
+            <p className="section__subtitle">Tools and infrastructure I use daily to build, evaluate, and scale software.</p>
+          </div>
+          <div className="stack-columns">
+            {skillCategories.map((group) => (
+              <div className="stack-column" key={group.title} {...glow}>
+                <h3 className="stack-column__title">{group.title}</h3>
+                <div className="skill-cloud">
+                  {group.skills.map((skill) => (
+                    <span key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        {/* Projects */}
+        {/* Work */}
         <section id="work" className="section">
           <div className="section__intro">
             <p className="eyebrow">Selected platforms</p>
@@ -83,7 +107,7 @@ export default function App() {
           </div>
           <div className="project-grid">
             {flagshipProjects.map((project) => (
-              <article className="project-card" key={project.title}>
+              <article className="project-card" key={project.title} {...glow}>
                 <div className="project-card__header">
                   <span className="project-card__eyebrow">{project.eyebrow}</span>
                   <span className="project-card__badge">{project.highlight}</span>
@@ -100,6 +124,9 @@ export default function App() {
           </div>
         </section>
 
+        {/* Systems */}
+        <SystemWorkflows stories={systemStories} />
+
         {/* Open Source */}
         <UtilitiesGrid utilities={utilities} />
 
@@ -114,7 +141,7 @@ export default function App() {
           </div>
           <div className="credential-grid">
             {credentials.map((item) => (
-              <article className="credential-card" key={item.title}>
+              <article className="credential-card" key={item.title} {...glow}>
                 <div className="credential-card__topline">
                   <span>{item.issuer}</span>
                   <span className="credential-card__accent">{item.accent}</span>
@@ -122,27 +149,6 @@ export default function App() {
                 <h3>{item.title}</h3>
                 <p>{item.detail}</p>
               </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Stack */}
-        <section id="stack" className="section">
-          <div className="section__intro">
-            <p className="eyebrow">Technical stack</p>
-            <h2>The engineering layer behind the systems.</h2>
-            <p className="section__subtitle">Tools and infrastructure I use daily to build, evaluate, and scale software.</p>
-          </div>
-          <div className="stack-columns">
-            {skillCategories.map((group) => (
-              <div className="stack-column" key={group.title}>
-                <h3 className="stack-column__title">{group.title}</h3>
-                <div className="skill-cloud">
-                  {group.skills.map((skill) => (
-                    <span key={skill}>{skill}</span>
-                  ))}
-                </div>
-              </div>
             ))}
           </div>
         </section>
@@ -174,10 +180,10 @@ export default function App() {
             </div>
           </div>
           <div className="footer__bottom">
-            <span>\u00a9 {new Date().getFullYear()} Sriteja Valaboju</span>
+            <span>© {new Date().getFullYear()} Sriteja Valaboju</span>
             <div className="footer__bottom-links">
               <a href={profile.portfolioRepoUrl} target="_blank" rel="noopener noreferrer">Source</a>
-              <a href="#top">Top \u2191</a>
+              <a href="#top">Top ↑</a>
             </div>
           </div>
         </footer>

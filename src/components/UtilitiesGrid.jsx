@@ -1,6 +1,9 @@
 import React from 'react'
+import { useCardGlow } from '../hooks/useCardGlow'
 
 export function UtilitiesGrid({ utilities }) {
+  const glow = useCardGlow()
+
   return (
     <section id="utilities" className="section">
       <div className="section__intro">
@@ -11,7 +14,7 @@ export function UtilitiesGrid({ utilities }) {
 
       <div className="utilities-grid">
         {utilities.map(item => (
-          <article className="utility-card" key={item.title}>
+          <article className="utility-card" key={item.title} {...glow}>
             <div className="utility-card__header">
               <span className="utility-card__eyebrow">{item.eyebrow}</span>
               <span className="utility-card__badge">{item.badge}</span>

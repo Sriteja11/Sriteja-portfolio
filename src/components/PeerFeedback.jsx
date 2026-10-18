@@ -42,7 +42,7 @@ export function PeerFeedback({ endorsements }) {
               <div className="feedback-card__badges">
                 <span className="feedback-card__team">{item.team}</span>
                 <span className={`feedback-card__role-tag ${item.sritejaRole.includes('AI') ? 'feedback-card__role-tag--ai' : ''}`}>
-                  {item.sritejaRole} ({item.date})
+                  {item.sritejaRole} · {item.year || item.date}
                 </span>
               </div>
               <span className="feedback-card__highlight">{item.highlight}</span>

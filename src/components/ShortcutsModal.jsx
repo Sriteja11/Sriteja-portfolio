@@ -21,7 +21,7 @@ export function ShortcutsModal({ isOpen, onClose }) {
     { key: '2', desc: 'Jump to Selected platforms' },
     { key: '3', desc: 'Jump to Systems & architecture' },
     { key: '4', desc: 'Jump to Open source & tools' },
-    { key: '5', desc: 'Jump to Interactive console' },
+    { key: '5', desc: 'Jump to Verified peer feedback' },
     { key: 'D', desc: 'Toggle Dark / Light mode' },
     { key: 'C', desc: 'Copy email to clipboard' },
     { key: 'R', desc: 'Download resume' },

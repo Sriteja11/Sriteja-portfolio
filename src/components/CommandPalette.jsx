@@ -60,14 +60,14 @@ export function CommandPalette({
       },
     },
     {
-      id: 'nav-terminal',
+      id: 'nav-feedback',
       group: 'Navigation',
-      title: 'Jump to Interactive Console',
-      subtitle: 'Live CLI runs for agent tools, profiling, and evaluations',
-      keywords: 'terminal console cli uv python run bash',
-      icon: '>',
+      title: 'Jump to Verified Feedback',
+      subtitle: 'Airbus 360 performance reviews from technical leads and managers',
+      keywords: 'feedback reviews testimonials airbus leads recommendations',
+      icon: '❝',
       action: () => {
-        document.getElementById('terminal')?.scrollIntoView({ behavior: 'smooth' })
+        document.getElementById('feedback')?.scrollIntoView({ behavior: 'smooth' })
       },
     },
     {

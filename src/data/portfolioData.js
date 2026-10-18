@@ -293,3 +293,63 @@ export const credentials = [
     accent: 'GenAI',
   },
 ]
+
+export const endorsements = [
+  {
+    quote:
+      'Sri-Teja can rely on strong technical skills, which he continues to develop. I see him as capable of leading a technical team in the development of IT or AI solutions. His professionalism, conscientiousness, and sincerity are assets he should continue to build upon.',
+    author: 'Jean-Baptiste Pansart',
+    authorRole: 'Engineering Lead, Airbus',
+    sritejaRole: 'Software Engineer - AI',
+    date: 'August 2026',
+    team: 'Airbus 360 Review',
+    highlight: 'AI Team Leadership & Technical Capability',
+    featured: true,
+  },
+  {
+    quote:
+      'He has been a solid pillar for frontend requirements, driving UI as a solo resource. What stands out is his proactive approach; instead of waiting for perfect documentation, he syncs directly with backend folks to fix API contracts and data formats early on. Moreover, his recent involvement in GenAI projects shows he is not just restricted to traditional frontend work but is ready to evolve with the current tech stack.',
+    author: 'Dharmateja Kondreddigari',
+    authorRole: 'Technical Lead & Senior Engineer, Airbus',
+    sritejaRole: 'Associate Software Engineer',
+    date: 'January 2026',
+    team: 'Airbus 360 Review',
+    highlight: 'Proactive Ownership & GenAI Agility',
+    featured: false,
+  },
+  {
+    quote:
+      'Sriteja is a highly versatile and dependable developer who balances rapid execution with technical depth while maintaining process and code quality. From single-handedly managing frontend development for ModelOps portal, he has proven to be an agile asset to the team.',
+    author: 'Parag Tarpendra',
+    authorRole: 'Engineering Lead & Manager, Airbus',
+    sritejaRole: 'Associate Software Engineer',
+    date: 'January 2026',
+    team: 'Airbus 360 Review',
+    highlight: 'Execution Speed & Reliability',
+    featured: false,
+  },
+  {
+    quote:
+      'He is a reliable developer who delivers Vue.js and React features with an impressive turnaround time and very little oversight. His greatest strength is his technical autonomy and speed in execution across multiple frameworks.',
+    author: 'Ritesh Meher',
+    authorRole: 'Lead Engineer, Airbus',
+    sritejaRole: 'Associate Software Engineer',
+    date: 'January 2026',
+    team: 'Airbus 360 Review',
+    highlight: 'Technical Autonomy',
+    featured: false,
+  },
+]
+
+export const agentProtocol = {
+  endpoint: 'https://formsubmit.co/ajax/sritejavalaboju000@gmail.com',
+  method: 'POST',
+  curlExample: `curl -X POST https://formsubmit.co/ajax/sritejavalaboju000@gmail.com \\
+  -H "Content-Type: application/json" \\
+  -d '{
+        "_subject": "AI Agent: Opportunity for Sriteja",
+        "name": "<agent or company>",
+        "message": "<role, company, and next step>"
+      }'`,
+}
+

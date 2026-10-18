@@ -1493,6 +1493,7 @@ h3 {
 @media (max-width: 960px) {
   .stories-grid,
   .project-grid,
+  .feedback-grid,
   .stack-columns {
     grid-template-columns: 1fr;
   }
@@ -1525,7 +1526,7 @@ h3 {
     font-size: clamp(2.4rem, 12vw, 3.6rem);
   }
 
-  .nav__brand-text {
+  .nav__brand-role {
     display: none;
   }
 
@@ -1799,4 +1800,273 @@ h3 {
 .footer__shortcut-trigger:hover {
   color: var(--accent-violet);
 }
+
+/* ─── Peer Feedback Section ─── */
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feedback-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-focus);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.08);
+}
+
+.feedback-card--featured {
+  border-color: rgba(124, 58, 237, 0.35);
+  background: linear-gradient(
+    145deg,
+    rgba(124, 58, 237, 0.04) 0%,
+    var(--bg-card) 60%
+  );
+  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.06);
+}
+
+.feedback-card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-violet), var(--accent-emerald));
+}
+
+.feedback-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.feedback-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-card__team {
+  padding: 3px 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.feedback-card__role-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-subtle);
+}
+
+[data-theme='dark'] .feedback-card__role-tag {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.feedback-card__role-tag--ai {
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.feedback-card__highlight {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent-violet);
+  font-family: var(--font-mono);
+}
+
+.feedback-card__quote {
+  margin: 0 0 20px 0;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.68;
+  font-style: normal;
+  position: relative;
+  flex-grow: 1;
+}
+
+.feedback-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.feedback-card__author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.feedback-card__author {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.feedback-card__author-role {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ─── Agent Protocol Card ─── */
+.agent-protocol-card {
+  margin-bottom: 48px;
+  padding: 28px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.agent-protocol-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.agent-protocol-card__eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-violet);
+  margin-bottom: 4px;
+}
+
+.agent-protocol-card__title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.agent-protocol-card__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.agent-protocol-card__description {
+  margin: 0 0 16px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.agent-protocol-card__cmd-box {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: #0b0f19;
+  overflow: hidden;
+}
+
+.agent-protocol-card__cmd-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.agent-protocol-card__method {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.agent-protocol-card__copy-btn {
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.agent-protocol-card__copy-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.agent-protocol-card__code {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #e2e8f0;
+}
+
+.agent-protocol-card__code code {
+  font-family: inherit;
+}
+
+.agent-protocol-card__hint {
+  margin: 10px 0 0;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* ─── Touch / Mobile Utility Classes ─── */
+@media (max-width: 768px), (pointer: coarse) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
 

@@ -5,7 +5,7 @@ const SECTIONS = [
   { id: 'work', label: 'Work' },
   { id: 'systems', label: 'Systems' },
   { id: 'utilities', label: 'Open Source' },
-  { id: 'terminal', label: 'Console' },
+  { id: 'feedback', label: 'Feedback' },
 ]
 
 export function Navigation({
@@ -38,10 +38,9 @@ export function Navigation({
     <header className="nav-shell">
       <nav className="nav" aria-label="Primary navigation">
         <a className="nav__brand" href="#top" aria-label="Sriteja Valaboju home">
-          <span className="nav__brand-mark">SV</span>
           <span className="nav__brand-text">
-            <span className="nav__brand-label">Sriteja</span>
-            <span className="nav__brand-role">GenAI Engineer</span>
+            <span className="nav__brand-label">Sriteja Valaboju</span>
+            <span className="nav__brand-role">AI Engineer / Platforms</span>
           </span>
         </a>
 
@@ -71,7 +70,7 @@ export function Navigation({
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
             <span className="nav__cmd-label">Search</span>
-            <span className="nav__kbd">⌘K</span>
+            <span className="nav__kbd hide-on-mobile">⌘K</span>
           </button>
 
           <button
@@ -82,7 +81,6 @@ export function Navigation({
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              // Sun icon for dark mode (to switch to light)
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="5" />
                 <line x1="12" y1="1" x2="12" y2="3" />
@@ -95,7 +93,6 @@ export function Navigation({
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
               </svg>
             ) : (
-              // Moon icon for light mode (to switch to dark)
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
@@ -104,7 +101,7 @@ export function Navigation({
 
           <button
             type="button"
-            className="nav__icon-btn nav__icon-btn--help"
+            className="nav__icon-btn nav__icon-btn--help hide-on-mobile"
             onClick={onOpenShortcuts}
             title="Keyboard shortcuts (Press ?)"
             aria-label="View keyboard shortcuts"

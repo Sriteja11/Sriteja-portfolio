@@ -6,7 +6,8 @@ import { GradientCanvas } from './components/GradientCanvas'
 import { Navigation } from './components/Navigation'
 import { SystemWorkflows } from './components/SystemWorkflows'
 import { UtilitiesGrid } from './components/UtilitiesGrid'
-import { TerminalDemo } from './components/TerminalDemo'
+import { PeerFeedback } from './components/PeerFeedback'
+import { AgentProtocol } from './components/AgentProtocol'
 import { TouchSplash } from './components/TouchSplash'
 import { GlassLens } from './components/GlassLens'
 import { CommandPalette } from './components/CommandPalette'
@@ -21,6 +22,8 @@ import {
   flagshipProjects,
   utilities,
   credentials,
+  endorsements,
+  agentProtocol,
 } from './data/portfolioData'
 
 function useTouchDevice() {
@@ -92,7 +95,7 @@ export default function App() {
     showToast('Downloading verified resume...')
   }, [resumeUrl, showToast])
 
-  // Global keyboard shortcuts
+  // Global keyboard shortcuts (disabled on touch devices)
   useEffect(() => {
     const handleKeyDown = (e) => {
       const activeTag = document.activeElement?.tagName?.toLowerCase()
@@ -108,8 +111,8 @@ export default function App() {
         return
       }
 
-      // If user is currently typing in an input or modal is open, skip single-key shortcuts
-      if (isInputFocused || isPaletteOpen || isShortcutsOpen) return
+      // If on mobile/touch, or user is typing in an input, or modal is open, skip single-key shortcuts
+      if (isTouch || isInputFocused || isPaletteOpen || isShortcutsOpen) return
 
       if (e.key === '/') {
         e.preventDefault()
@@ -135,13 +138,14 @@ export default function App() {
       } else if (e.key === '4') {
         document.getElementById('utilities')?.scrollIntoView({ behavior: 'smooth' })
       } else if (e.key === '5') {
-        document.getElementById('terminal')?.scrollIntoView({ behavior: 'smooth' })
+        document.getElementById('feedback')?.scrollIntoView({ behavior: 'smooth' })
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [
+    isTouch,
     isPaletteOpen,
     isShortcutsOpen,
     handleToggleTheme,
@@ -294,8 +298,8 @@ export default function App() {
         {/* Open Source */}
         <UtilitiesGrid utilities={utilities} />
 
-        {/* Terminal */}
-        <TerminalDemo />
+        {/* Peer Feedback */}
+        <PeerFeedback endorsements={endorsements} />
 
         {/* Credentials */}
         <section id="credentials" className="section" aria-label="Certifications">
@@ -317,8 +321,11 @@ export default function App() {
           </div>
         </section>
 
-        {/* Footer */}
+        {/* Footer & Contact */}
         <footer id="contact" className="footer section">
+          {/* Machine-readable Agent Protocol Card */}
+          <AgentProtocol protocol={agentProtocol} onCopyFeedback={showToast} />
+
           <div className="footer__content">
             <div>
               <p className="eyebrow">Let's build together</p>
@@ -355,7 +362,7 @@ export default function App() {
               <a href={profile.portfolioRepoUrl} target="_blank" rel="noopener noreferrer">Source</a>
               <button
                 type="button"
-                className="footer__shortcut-trigger"
+                className="footer__shortcut-trigger hide-on-mobile"
                 onClick={() => setIsShortcutsOpen(true)}
               >
                 Press <kbd className="cmd-kbd">?</kbd> for shortcuts

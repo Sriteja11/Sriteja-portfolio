@@ -31,6 +31,9 @@ mcp = MCPServer(
 )
 
 def _public_profile() -> Dict[str, Any]:
+    local = read_json("profile.local.json", None)
+    if local is not None:
+        return local
     return read_json("profile.public.json", {})
 
 def _select_fields(record: Dict[str, Any], fields: Optional[List[str]] = None) -> Dict[str, Any]:

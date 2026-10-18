@@ -23,6 +23,19 @@ const commands = [
     ]
   },
   {
+    id: 'research',
+    label: 'understand-research',
+    cmd: 'python run_app.py',
+    output: [
+      '[bootstrap] Python 3.11+ detected.',
+      '[bootstrap] Checking dependencies and SQLite at data/app.db... OK',
+      '[chroma] Persistent vector collection "research_documents" ready (5 seed papers).',
+      '[stt] Loaded Cactus Whistle STT model (16.9 MB) on CPU.',
+      '[tracing] Langfuse tracer connected.',
+      '[ready] App live at http://localhost:8000 (React UI + FastAPI + SSE)'
+    ]
+  },
+  {
     id: 'mcp',
     label: 'job-apply-mcp',
     cmd: 'uv run job-apply-mcp --list-tools',

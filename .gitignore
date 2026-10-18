@@ -14,6 +14,7 @@ dist-ssr
 job-apply-mcp/.env
 job-apply-mcp/data/private-profile.json
 job-apply-mcp/data/private-profile.json.enc
+job-apply-mcp/data/profile.local.json
 job-apply-mcp/data/jobs.local.json
 job-apply-mcp/data/applications.local.json
 

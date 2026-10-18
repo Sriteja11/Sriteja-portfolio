@@ -299,7 +299,8 @@ export const endorsements = [
     quote:
       'Sri-Teja can rely on strong technical skills, which he continues to develop. I see him as capable of leading a technical team in the development of IT or AI solutions. His professionalism, conscientiousness, and sincerity are assets he should continue to build upon.',
     author: 'Jean-Baptiste Pansart',
-    authorRole: 'Engineering Lead, Airbus',
+    authorRole: 'Business Relationship Manager, Airbus',
+    authorLinkedin: 'https://www.linkedin.com/in/jean-baptiste-pansart-11009263/',
     sritejaRole: 'Software Engineer - AI',
     year: '2026',
     team: 'Airbus 360 Review',
@@ -321,7 +322,8 @@ export const endorsements = [
     quote:
       'He has been a solid pillar for frontend requirements, driving UI as a solo resource. What stands out is his proactive approach; instead of waiting for perfect documentation, he syncs directly with backend folks to fix API contracts and data formats early on. Moreover, his recent involvement in GenAI projects shows he is not just restricted to traditional frontend work but is ready to evolve with the current tech stack.',
     author: 'Dharmateja Kondreddigari',
-    authorRole: 'Technical Lead & Senior Engineer, Airbus',
+    authorRole: 'AI Architect, Airbus',
+    authorLinkedin: 'https://www.linkedin.com/in/dharmateja-k/',
     sritejaRole: 'Associate Software Engineer',
     year: '2024',
     team: 'Airbus 360 Review',
@@ -332,7 +334,8 @@ export const endorsements = [
     quote:
       'Sriteja is a highly versatile and dependable developer who balances rapid execution with technical depth while maintaining process and code quality. From single-handedly managing frontend development for ModelOps portal, he has proven to be an agile asset to the team.',
     author: 'Parag Tarpendra',
-    authorRole: 'Engineering Lead & Manager, Airbus',
+    authorRole: 'Product Owner, Airbus',
+    authorLinkedin: 'https://www.linkedin.com/in/parag-k-87258019/',
     sritejaRole: 'Associate Software Engineer',
     year: '2024',
     team: 'Airbus 360 Review',
@@ -343,7 +346,8 @@ export const endorsements = [
     quote:
       'He is a reliable developer who delivers Vue.js and React features with an impressive turnaround time and very little oversight. His greatest strength is his technical autonomy and speed in execution across multiple frameworks.',
     author: 'Ritesh Meher',
-    authorRole: 'Lead Engineer, Airbus',
+    authorRole: 'Engineering Leader - Artificial Intelligence, Airbus',
+    authorLinkedin: 'https://www.linkedin.com/in/riteshmeher/',
     sritejaRole: 'Associate Software Engineer',
     year: '2024',
     team: 'Airbus 360 Review',

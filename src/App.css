@@ -1932,10 +1932,28 @@ h3 {
   gap: 2px;
 }
 
+.feedback-card__author-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .feedback-card__author {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-main);
+}
+
+.feedback-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 120ms ease;
+}
+
+.feedback-card__linkedin:hover {
+  color: var(--accent-violet);
 }
 
 .feedback-card__author-role {

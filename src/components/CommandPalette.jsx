@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { triggerDownload } from '../utils/download'
 
 export function CommandPalette({
   isOpen,
@@ -113,10 +114,7 @@ export function CommandPalette({
       keywords: 'resume cv pdf download hire',
       icon: '↓',
       action: () => {
-        const link = document.createElement('a')
-        link.href = resumeUrl
-        link.download = 'Sriteja_Valaboju_Resume.pdf'
-        link.click()
+        triggerDownload(resumeUrl, 'Sriteja_Valaboju_Resume.pdf')
       },
     },
     {
@@ -251,7 +249,15 @@ export function CommandPalette({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <span className="cmd-badge">ESC</span>
+          <span className="cmd-badge hide-on-mobile">ESC</span>
+          <button
+            type="button"
+            className="flow-inspector__close"
+            onClick={onClose}
+            aria-label="Close command palette"
+          >
+            ✕
+          </button>
         </div>
 
         <div className="cmd-list" ref={listRef}>
@@ -277,14 +283,14 @@ export function CommandPalette({
                     <span className="cmd-item__title">{item.title}</span>
                     <span className="cmd-item__subtitle">{item.subtitle}</span>
                   </div>
-                  <span className="cmd-item__group">{item.group}</span>
+                  <span className="cmd-item__group hide-on-mobile">{item.group}</span>
                 </div>
               )
             })
           )}
         </div>
 
-        <div className="cmd-footer">
+        <div className="cmd-footer hide-on-mobile">
           <span><kbd className="cmd-kbd">↑</kbd> <kbd className="cmd-kbd">↓</kbd> navigate</span>
           <span><kbd className="cmd-kbd">↵</kbd> select</span>
           <span><kbd className="cmd-kbd">esc</kbd> close</span>

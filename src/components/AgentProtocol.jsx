@@ -1,22 +1,16 @@
 import React, { useState } from 'react'
+import { copyToClipboard } from '../utils/clipboard'
 
 export function AgentProtocol({ protocol, onCopyFeedback }) {
   const [copied, setCopied] = useState(false)
 
   const copyCurl = async () => {
-    try {
-      await navigator.clipboard.writeText(protocol.curlExample)
-    } catch {
-      const ta = document.createElement('textarea')
-      ta.value = protocol.curlExample
-      document.body.appendChild(ta)
-      ta.select()
-      document.execCommand('copy')
-      ta.remove()
+    const success = await copyToClipboard(protocol.curlExample)
+    if (success) {
+      setCopied(true)
+      if (onCopyFeedback) onCopyFeedback('Agent curl command copied')
+      window.setTimeout(() => setCopied(false), 2000)
     }
-    setCopied(true)
-    if (onCopyFeedback) onCopyFeedback('Agent curl command copied')
-    window.setTimeout(() => setCopied(false), 2000)
   }
 
   return (
